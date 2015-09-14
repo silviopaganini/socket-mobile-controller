@@ -1,5 +1,7 @@
 # Socket mobile controller
 
+[![npm version](https://badge.fury.io/js/socket-mobile-controller.svg)](http://badge.fury.io/js/socket-mobile-controller)
+
 ## Usage
 
 ```bash
