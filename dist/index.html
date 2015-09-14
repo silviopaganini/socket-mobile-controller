@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket test</title>
+</head>
+<body>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+
+function onConnect()
+{
+    
+}
+
+function onMessage(e)
+{
+    console.log(e)
+}
+
+function onDisconnect()
+{
+    console.log(e);
+}
+
+socket = io.connect('http://localhost:3333');
+
+socket.on('connect', onConnect);
+socket.on('message', onMessage);
+socket.on('disconnect', onDisconnect);
+
+</script>
+
+</body>
+</html>

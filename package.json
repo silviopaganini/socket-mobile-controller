@@ -1,0 +1,30 @@
+{
+  "name": "socket-mobile-controller",
+  "version": "1.0.0",
+  "description": "wrapper for socket.io mobile controller",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/silviopaganini/socket-mobile-controller.git"
+  },
+  "keywords": [
+    "socket.io",
+    "mobile",
+    "controller",
+    "session",
+    "management"
+  ],
+  "author": "Silvio Paganini <s2paganini@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silviopaganini/socket-mobile-controller/issues"
+  },
+  "homepage": "https://github.com/silviopaganini/socket-mobile-controller#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "socket.io": "^1.3.6"
+  }
+}
