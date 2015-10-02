@@ -21,6 +21,9 @@ RUN apt-get update && \
 
 # Copy custom configuration file from the current directory
 RUN rm /etc/nginx/sites-available/default
+RUN rm /etc/nginx/nginx.conf
+
+COPY devops/nginx.conf /etc/nginx/nginx.conf
 COPY devops/default /etc/nginx/sites-available/default
 COPY devops/default /etc/nginx/sites-enabled/default
 
