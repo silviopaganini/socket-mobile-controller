@@ -4,29 +4,110 @@
     <title>Socket test</title>
 </head>
 <body>
+
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<input type="number">
+<button>Connect</button>
+<input type="range" style="display:none;">
+<br>
+<textarea readonly cols="100" rows="15"></textarea>
+
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
 
-function onConnect()
+var SESSION = '';
+var IS_MOBILE = false;
+var h1 = document.querySelector("h1");
+var h2 = document.querySelector("h2");
+var h3 = document.querySelector("h3");
+var logs = document.querySelector('textarea');
+var button = document.querySelector('button');
+var input = document.querySelector('input[type=number]');
+var range = document.querySelector('input[type=range]');
+
+/*
+Using Docker? remove the port, 
+otherwise use port 8888 or whatever port you have set
+*/
+var socket = io.connect('ws://' + window.location.hostname + ":" + window.location.port);
+socket.on('connect', onConnect);
+socket.on('message', onMessage);
+socket.on('disconnect', onDisconnect);
+
+/*
+
+body
+
+*/
+
+if(window.location.pathname == "/")
 {
-    
+    document.body.removeChild(button);
+    document.body.removeChild(input);
+    document.body.removeChild(range);
+} else {
+    IS_MOBILE = true;
+} 
+
+function connectToSession()
+{
+    console.log(input.value);
+    socket.emit('setChannel', {uid : input.value});
+    SESSION = input.value;
+    button.removeEventListener('click', connectToSession, false);
+    document.body.removeChild(button);
+    document.body.removeChild(input);
+}
+
+function sendMessageToHost(e)
+{
+    socket.emit('control', {range: range.value, uid: SESSION});
+}
+
+button.addEventListener('click', connectToSession, false);
+range.addEventListener('input', sendMessageToHost, false);
+
+/*
+
+events
+
+*/
+
+function onConnect(e)
+{
+    h1.innerText = "Connected";
 }
 
 function onMessage(e)
 {
-    console.log(e)
+    var url = window.location.protocol + "//" + window.location.hostname + (window.location.port.length > 0 ? ":" + window.location.port : "") + '/mobile';
+
+    switch(e.message)
+    {
+        case "connected":
+            h2.innerHTML = "UID Session: " + e.uid;
+            if(IS_MOBILE)
+            {
+                if(range) range.style.display = 'block';
+            } else {
+                h3.innerHTML = "Now connect your device, go to <a href='"+url+"' target='_blank'>"+url+"</a>";
+            }
+            break;
+        case "device-connected":
+            h3.innerHTML = "connected to device";
+            break;
+    }
+
+    logs.innerHTML = JSON.stringify(e) + "\n" + logs.innerHTML;
+    
 }
 
-function onDisconnect()
+function onDisconnect(e)
 {
     console.log(e);
 }
-
-socket = io.connect('http://localhost:3333');
-
-socket.on('connect', onConnect);
-socket.on('message', onMessage);
-socket.on('disconnect', onDisconnect);
 
 </script>
 

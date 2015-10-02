@@ -6,7 +6,7 @@ var path    = require('path');
 var io      = require('socket.io')(http);
 
 // const vars
-const PORT        = 3333;
+const PORT        = 8888;
 const DIST_FOLDER = path.resolve(__dirname + "/dist/");
 const ROUTES      = ['/', '/mobile'];
 //

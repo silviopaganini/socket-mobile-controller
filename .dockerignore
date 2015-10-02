@@ -1,0 +1,17 @@
+*.zip
+*.tgz
+node_modules/
+.sass-cache/
+npm-debug.log
+
+# OSX
+*.DS_Store
+
+rev-manifest.json
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+.ebextensions/

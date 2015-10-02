@@ -57,3 +57,29 @@ function onMessage(e)
 }
 ```
 Full example on `dist` folder
+
+## Docker + supervisord + AWS Elastic Beanstalk
+
+### Setup your Docker environment 
+
+Make sure you change the following variables inside the `Makefile`
+
+* IMAGE_NAME
+* CONTAINER_NAME
+
+### Supervisord
+
+Change the paths to your folders and server script on `devops/supervisord.conf`
+
+### Dockerfile
+
+Check the `Dockerfile` for any changes in folder names or files that you want to include / remove
+
+### Ready?
+
+Once you're ready, you can just run 
+
+```bash
+make docker
+```
+
