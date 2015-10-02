@@ -32,7 +32,7 @@ var socketManager = require('./lib/SocketManager')(io, {
 <script src="/socket.io/socket.io.js"></script>
 ```
 ```js
-var socket = io.connect('http://localhost:3333');
+var socket = io.connect('http://localhost:8888');
 
 socket.on('connect', onConnect);
 socket.on('message', onMessage);
@@ -56,7 +56,7 @@ function onMessage(e)
 	}
 }
 ```
-Full example on `dist` folder
+#### Full example on `dist` folder
 
 ## Docker + supervisord
 ### Setup your Docker environment 

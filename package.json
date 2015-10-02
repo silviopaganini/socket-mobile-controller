@@ -1,6 +1,6 @@
 {
   "name": "socket-mobile-controller",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "wrapper for socket.io mobile controller",
   "main": "index.js",
   "scripts": {
