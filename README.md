@@ -58,8 +58,7 @@ function onMessage(e)
 ```
 Full example on `dist` folder
 
-## Docker + supervisord + AWS Elastic Beanstalk
-
+## Docker + supervisord
 ### Setup your Docker environment 
 
 Make sure you change the following variables inside the `Makefile`
@@ -82,4 +81,15 @@ Once you're ready, you can just run
 ```bash
 make docker
 ```
+
+Check your Docker configuration and open the URL it's running. 
+
+
+## AWS Elastic Beanstalk
+
+This setup should just run out of the box on a AWS EBS setup with Docker.
+
+Have fun!
+
+@Thanks to [grudelsud](https://github.com/grudelsud) for his big patience with me =) 
 
