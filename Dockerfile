@@ -1,6 +1,12 @@
-FROM ubuntu
-
+FROM ubuntu:14.04
 MAINTAINER Silvio Paganini <silvio@fluuu.id>
+
+# keep upstart quiet
+RUN dpkg-divert --local --rename --add /sbin/initctl
+RUN ln -sf /bin/true /sbin/initctl
+
+# no tty
+ENV DEBIAN_FRONTEND noninteractive
 
 # Create folders
 RUN mkdir /lab
@@ -13,9 +19,9 @@ RUN mkdir logs
 RUN mkdir dist
 
 # install server dependencies
-RUN apt-get update && \
-    apt-get -y install curl && \
-    apt-get -y install git && \
+RUN apt-get update --fix-missing && \
+    apt-get -y install curl      && \
+    apt-get -y install git       && \
     curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash - && \
     apt-get -y install nginx supervisor python build-essential nodejs
 
